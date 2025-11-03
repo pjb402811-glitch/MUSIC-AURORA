@@ -15,7 +15,6 @@ import {
     ALL_INSTRUMENTS,
 } from '../constants';
 import Button from '../components/Button';
-import Loader from '../components/Loader';
 import { type MusicInfo, type Track } from '../types';
 import { generateMusicInfo, regenerateSunoPrompt, regenerateLyrics, suggestTitlesFromInfo, analyzeLyricsForSuggestions, suggestInstruments } from '../services/geminiService';
 

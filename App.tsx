@@ -10,7 +10,6 @@ import { initializeAi } from './services/geminiService';
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState('create');
   const { tracks, addTrack, clearLibrary, saveTracks, getTrackById, updateTrack } = useMusicLibrary();
-  const [apiKey, setApiKey] = useState<string | null>(null);
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
 
   // Simple hash-based routing
@@ -32,7 +31,6 @@ const App: React.FC = () => {
     try {
       const storedApiKey = localStorage.getItem('googleApiKey');
       if (storedApiKey) {
-          setApiKey(storedApiKey);
           initializeAi(storedApiKey);
       } else {
           setIsApiKeyModalOpen(true);
@@ -46,7 +44,6 @@ const App: React.FC = () => {
   const handleSaveApiKey = (key: string) => {
     try {
       localStorage.setItem('googleApiKey', key);
-      setApiKey(key);
       initializeAi(key);
       setIsApiKeyModalOpen(false);
     } catch (error) {
@@ -58,7 +55,6 @@ const App: React.FC = () => {
   const handleClearApiKey = () => {
       try {
         localStorage.removeItem('googleApiKey');
-        setApiKey(null);
         setIsApiKeyModalOpen(true);
       } catch (error) {
         console.error("Failed to clear API key from localStorage", error);
