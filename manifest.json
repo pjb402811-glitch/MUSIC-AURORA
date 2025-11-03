@@ -2,21 +2,23 @@
   "name": "Aurora Tune AI",
   "short_name": "AuroraTune",
   "description": "AI 기반 음악 창작 앱 Aurora Tune AI는 음악 애호가들이 전문적인 음악 생성 AI용 프롬프트를 만들고, 멋진 앨범 아트를 제작하며, 자신의 창작물을 미래 지향적이고 직관적인 인터페이스에서 관리할 수 있도록 돕습니다.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#111827",
   "theme_color": "#111827",
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "/icon-192x192.svg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "/icon-512x512.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
