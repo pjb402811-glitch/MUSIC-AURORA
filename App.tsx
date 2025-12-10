@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import CreationPage from './pages/CreationPage';
@@ -67,7 +68,12 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
-      {isApiKeyModalOpen && <ApiKeyModal onSave={handleSaveApiKey} />}
+      {isApiKeyModalOpen && (
+        <ApiKeyModal 
+          onSave={handleSaveApiKey} 
+          onClose={() => setIsApiKeyModalOpen(false)} 
+        />
+      )}
       <Header activePage={activePage} navigateTo={navigateTo} />
       <main className="flex-1 p-8 overflow-y-auto">
         {activePage.startsWith('create') && <CreationPage addTrack={addTrack} navigateTo={navigateTo} getTrackById={getTrackById} updateTrack={updateTrack} />}

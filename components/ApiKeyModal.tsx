@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react';
 import Button from './Button';
 
 interface ApiKeyModalProps {
   onSave: (apiKey: string) => void;
+  onClose: () => void;
 }
 
 const KeyIcon = () => (
@@ -11,7 +13,13 @@ const KeyIcon = () => (
     </svg>
 );
 
-const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ onSave }) => {
+const CloseIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+);
+
+const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ onSave, onClose }) => {
   const [key, setKey] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,7 +31,14 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ onSave }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50 animate-fade-in">
-      <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-xl p-8 w-full max-w-lg m-4 text-gray-200">
+      <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-xl p-8 w-full max-w-lg m-4 text-gray-200 relative">
+        <button 
+            onClick={onClose} 
+            className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors p-1 rounded-full hover:bg-gray-700"
+            title="닫기"
+        >
+            <CloseIcon />
+        </button>
         <h2 className="text-2xl font-bold mb-2">Google AI API Key 설정</h2>
         <p className="text-red-400 mb-4">이 앱을 사용하려면 Google AI API Key가 필요합니다. 아래에 입력해주세요.</p>
         
